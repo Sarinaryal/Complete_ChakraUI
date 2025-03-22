@@ -1,6 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react"
 import { Outlet } from "react-router-dom"
 import Navbar from "../Components/Navbar"
+import Sidebar from "../Components/Sidebar"
 
 export default function RootLayout() {
   return (
@@ -12,7 +13,7 @@ export default function RootLayout() {
         minHeight= {{lg: '100vh'}} 
         p={{ base: '20px' , lg: '30px'}}
       >
-      <span>sidebar</span>
+      <Sidebar/>
       </GridItem>
       
       <GridItem 
