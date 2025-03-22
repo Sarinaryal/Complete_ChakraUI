@@ -5,12 +5,21 @@ import Navbar from "../Components/Navbar"
 export default function RootLayout() {
   return (
     <Grid templateColumns='repeat(6, 1fr)' bg='grey.50'>
-      <GridItem as='aside' colSpan='1'
-      bg='purple.400' minHeight='100vh' p='30px'>
+      <GridItem 
+        as='aside' 
+        colSpan= {{ base: 6, lg : 2, xl: 1}}
+        bg='purple.400' 
+        minHeight= {{lg: '100vh'}} 
+        p={{ base: '20px' , lg: '30px'}}
+      >
       <span>sidebar</span>
       </GridItem>
       
-      <GridItem as='main' colSpan='5' p='40px'>
+      <GridItem 
+        as='main' 
+        colSpan= {{ base: 6, lg : 4, xl: 5}} 
+        p='40px'
+      >
       <Navbar/>
       <Outlet />
       </GridItem>
