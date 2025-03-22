@@ -1,52 +1,48 @@
-import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { EditIcon, ViewIcon } from "@chakra-ui/icons";
+import { Box, Button, Card, CardBody, CardFooter, CardHeader, Container, Divider, Flex, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import { useLoaderData } from "react-router-dom";
 
 export default function Dashboard() {
-
+  const tasks = useLoaderData()
   return(
     
-    <SimpleGrid p='10px' spacing={10} minChildWidth='250px'>
-      <Box bg='white' h='200px' border='1px solid'>
-        <Text color={{ base: 'pink', md : 'blue', lg : 'green'}} fontSize={{base: '24px', md : '20px', lg : '30px'}}>Responsive Text</Text>
-      </Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
+    <SimpleGrid spacing={10} minChildWidth='300px'>
+      {tasks && tasks.map(task => (
+        // <div key={task.id}>{task.title}</div>
+        <Card key={task.id} borderTop='8px' borderColor='purple.400' bg='white'>
+          <CardHeader>
+            <Flex gap={5}>
+              <Box w='50px' h='50px'>
+                <Text>Av</Text>
+              </Box>
+              <Box>
+                <Heading as='h3' size='sm'>{task.title}</Heading>
+                <Text>by {task.author}</Text>
+              </Box>
+            </Flex>
+          </CardHeader>
 
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
+          <CardBody color='grey.500'>
+          <Text>{task.description}</Text>
+          </CardBody>
 
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
-      <Box bg='white' h='200px' border='1px solid'></Box>
+          <Divider borderColor='grey.100'/>
+
+          <CardFooter>
+            <HStack>
+              <Button variant='ghost' leftIcon={<ViewIcon/>}>Watch</Button>
+              <Button variant='ghost' leftIcon={<EditIcon/>}>Comment</Button>
+            </HStack>
+          </CardFooter>
+        </Card>
+      ))}
 
     </SimpleGrid>
   )
 
-  // const boxStyles = {
-  //   p: '10px',
-  //   bg: "lightgreen",
-  //   color: 'white',
-  //   textAlign: 'center',
-  //   filter: 'blur(2px)',
-  //   ':hover': {
-  //     color: 'black',
-  //     bg: 'lightblue'
-  //   }
-  // }
-  // return (
-  //   <Container as='section' maxWidth='md' py='20px'>
-  //     <Heading my='30px' p='10px'>Chakra UI Components</Heading>
-  //     <Text ml = '40px'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa fugit libero voluptatum et modi? Facere exercitationem et libero expedita magnam!</Text>
-
-  //     <Text ml = '40px' color='blue.500' fontWeight='bold'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa fugit libero voluptatum et modi? Facere exercitationem et libero expedita magnam!</Text>
-
-  //     <Box my='10px' p='20px' bg='lightpink' color='white'>This is a box</Box>
-
-  //     {/* passing object in sx prop named boxStyles */}
-  //     <Box sx={boxStyles}>Hello!, Its me Sarina.</Box>
-  //   </Container>
-  // )
 }
+export const tasksLoader = async () => {
+  const res = await fetch('http://localhost:3000/tasks');
+
+  return res.json()
+};
