@@ -1,0 +1,7 @@
+// we should use json server to fetch data saved in db.json to generate the endpoints
+
+//json server needed to be running in the background otherwise data fetch cant be achieved
+//npm install -g json-server
+
+//To producde the endpoints
+//json-server -w ./data/db.json

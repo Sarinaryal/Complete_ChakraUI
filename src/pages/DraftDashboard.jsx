@@ -56,3 +56,8 @@ export const taskLoader = async () => {
 
   return res.json();
 }
+
+// we should use json server to fetch data saved in db.json to generate the endpoints
+
+//npm install -g json-server
+//json-server -w ./data/db.json
