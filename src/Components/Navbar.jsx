@@ -1,5 +1,5 @@
 import { UnlockIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, HStack, Spacer, Text, useToast } from '@chakra-ui/react';
+import { Avatar, AvatarBadge, Box, Button, Flex, Heading, HStack, Spacer, Text, useToast } from '@chakra-ui/react';
 import React from 'react'
 
 export default function Navbar() {
@@ -23,9 +23,13 @@ export default function Navbar() {
       <Spacer/>
       {/* Hstack works as gap between items */}
       <HStack spacing='20px'>
-      <Box bg='grey.200' p='10px'>M</Box>
-      <Text>About Us</Text>
-      <Button colorScheme='purple' onClick={showToast}>Logout</Button>
+        <Avatar name='Sario' bg='purple' src="/img/mario.png">
+          <AvatarBadge width='1.3em' bg='teal.500'>
+            <Text fontSize="xs" color='white'>3</Text>
+          </AvatarBadge>
+        </Avatar>
+        <Text>About Us</Text>
+        <Button colorScheme='purple' onClick={showToast}>Logout</Button>
       </HStack>
     </Flex>
 
