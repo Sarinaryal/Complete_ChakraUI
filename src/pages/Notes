@@ -5,3 +5,7 @@
 
 //To producde the endpoints
 //json-server -w ./data/db.json
+
+//one of the drawback of using a component library like chakra UI =>
+//  is that our website start to feel very same and generic coz they all use the same pre-styled components and all those components use whats known a default theme inside chakra 
+// and that default theme dectates the color palette available to us the font sizes the font faces the breakpoints spacing border radius etc
